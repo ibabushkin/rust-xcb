@@ -86,6 +86,14 @@ pub struct StructPtr<'a, T: 'a> {
     phantom: PhantomData<&'a T>
 }
 
+impl<'a, T> StructPtr<'a, T> {
+    pub fn new(ptr: *mut T) -> StructPtr<'a, T> {
+        StructPtr {
+            ptr: ptr,
+            phantom: PhantomData,
+        }
+    }
+}
 
 /// `Event` wraps a pointer to `xcb_*_event_t`
 /// this pointer will be freed when the `Event` goes out of scope
